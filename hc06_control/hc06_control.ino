@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 
-bool debug = true;
+bool debug = false;
 
 /* Based on MonsterMoto Shield Example Sketch
  * code by: Jim Lindblom
@@ -140,7 +140,10 @@ void parseData() {
       break;
     case 'C':
       // button center case
-      // TODO
+      motorOff(0);
+      motorOff(1);
+      beep(5);
+      digitalWrite(powerPin, LOW);
       break;
     default:
       // optional
@@ -210,21 +213,21 @@ void updateMotors() {
     motorOff(1);
   }
 
-  if ((analogRead(cspin[0]) > CS_THRESHOLD) && (analogRead(cspin[1]) > CS_THRESHOLD)) {
-      SerialBT.println(String("HC:")
-        + analogRead(cspin[0]) 
-        + String(",") 
-        + analogRead(cspin[1])
-      );
+  //if ((analogRead(cspin[0]) > CS_THRESHOLD) && (analogRead(cspin[1]) > CS_THRESHOLD)) {
+  //    SerialBT.println(String("HC:")
+  //      + analogRead(cspin[0]) 
+  //      + String(",") 
+  //      + analogRead(cspin[1])
+  //    );
 
-      if (debug) {
-        Serial.println(String("HC:")
-          + analogRead(cspin[0]) 
-          + String(",") 
-          + analogRead(cspin[1])
-        );
-      }
-  }
+  //    if (debug) {
+  //      Serial.println(String("HC:")
+  //        + analogRead(cspin[0]) 
+  //        + String(",") 
+  //        + analogRead(cspin[1])
+  //      );
+  //    }
+  //}
 
   // delay(500);
 }
