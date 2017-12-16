@@ -1,3 +1,3 @@
-# Charizord
+# Thanos
 
-A amazing robot that will rock!
+Robot for UNIP Assis project!
